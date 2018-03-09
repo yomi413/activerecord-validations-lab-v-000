@@ -8,7 +8,8 @@ class Post < ActiveRecord::Base
   CLICKBAIT_VALUES = ["Won't Believe", "Secret", "Top [0-9]", "Guess"]
 
   def clickbait
-    if title.split.include?(CLICKBAIT_VALUES)
+    if !CLICKBAIT_VALUES.in? :title
+    # if !title.include?(CLICKBAIT_VALUES)
       errors.add(:title, "Must be clickbait")
     end
   end
