@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
 
   def clickbait
 
-    unless CLICKBAIT_VALUES.none? {|bait| bait.match :title}
+    if CLICKBAIT_VALUES.none? {|bait| bait.match :title}
       errors.add(:title, "Needs to be clickbait!")
     end
     # if
