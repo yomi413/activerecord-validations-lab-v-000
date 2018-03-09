@@ -8,10 +8,7 @@ class Post < ActiveRecord::Base
   CLICKBAIT_VALUES = ["Won't Believe", "Secret", "Top [0-9]", "Guess"]
 
   def clickbait
-    if CLICKBAIT_VALUES.any? do |cb|
-      cb.match title
-    end
-    # if !title.include?(CLICKBAIT_VALUES)
+    if !CLICKBAIT_VALUES.any? {|cb| cb.match title}
       errors.add(:title, "Must be clickbait")
     end
   end
